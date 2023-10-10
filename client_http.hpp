@@ -46,13 +46,16 @@ namespace SimpleWeb {
 #endif
 
 namespace SimpleWeb {
+  // socket_type作为模板的一个占位符
   template <class socket_type>
+  // 外部类的初始化不会自动调用内部类的构造
   class Client;
 
   template <class socket_type>
   class ClientBase {
   public:
     class Content : public std::istream {
+      // 声明ClientBase为Content的友元，即ClientBase可以访问Content中的私有方法
       friend class ClientBase<socket_type>;
 
     public:
